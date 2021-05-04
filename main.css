@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap');
+
+.column_2{
+    -webkit-column-count: 2; /* Chrome, Safari, Opera */
+    -moz-column-count: 2; /* Firefox */
+    column-count: 2;
+}
+.column_2>span{
+  display:block;
+}
+
+.pizzaContent {
+    background-color: #f6a935;
+    font-family: 'Montserrat', sans-serif;
+}
+.pizzaContent h3{
+    font-weight: 700;
+}
+.heavyFont {
+    font-weight: 700;
+}
+
