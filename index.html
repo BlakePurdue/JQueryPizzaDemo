@@ -18,21 +18,21 @@
     </header>
 
     <div class="container row mx-auto pt-5 h-100">
-        <div class="col-lg-7 pizzaContent rounded shadow">
+        <div class="col-lg-7 pizzaContent rounded shadow-lg">
             <div class="container py-3">
                 <h3 class="py-2">Create your pizza!</h3>
-                <form class="mx-auto"> 
+                <form class="mx-auto" id="pizzaForm"> 
                     <!--Pizza TYPE dropdown label and select-->
                     <div class="row g-3 align-items-center w-100 pt-2">
                             <div class="col-lg-2">
                             <label for="" class="col-form-label heavyFont">Type:</label>
                             </div>
                             <div class="col-lg-10">
-                                <select class="form-select" aria-label="Default select example">
-                                        <option value="1" selected>Pepperoni</option>
-                                        <option value="2">Hawaiian</option>
-                                        <option value="3">Classic Cheese</option>
-                                        <option value="4">BBQ Chicken & Bacon Deluxe</option>
+                                <select id="pizzaTypeSelect" class="form-select" aria-label="Default select example">
+                                        <option value="Pepperoni" selected>Pepperoni</option>
+                                        <option value="Hawaiian">Hawaiian</option>
+                                        <option value="Classic Cheese">Classic Cheese</option>
+                                        <option value="BBQ Chicken & Bacon Deluxe">BBQ Chicken & Bacon Deluxe</option>
                                 </select>
                             </div>
                     </div><!--Pizza TYPE dropdown label and select END-->
@@ -43,10 +43,10 @@
                             <label for="" class="col-form-label heavyFont">Size:</label>
                             </div>
                             <div class="col-lg-10">
-                                <select class="form-select" aria-label="Default select example">
-                                        <option value="1" selected>Small</option>
-                                        <option value="2">Medium</option>
-                                        <option value="3">Large</option>
+                                <select id="pizzaSizeSelect" class="form-select" aria-label="Default select example">
+                                        <option value="Small" selected>Small</option>
+                                        <option value="Medium">Medium</option>
+                                        <option value="Large">Large</option>
                                 </select>
                             </div>
                     </div> <!--Pizza SIZE dropdown label and select END-->
@@ -57,11 +57,11 @@
                             <label for="" class="col-form-label heavyFont">Base:</label>
                             </div>
                             <div class="col-lg-10">
-                                <select class="form-select" aria-label="Default select example">
-                                        <option value="1" selected>Regular</option>
-                                        <option value="2">Thin crust</option>
-                                        <option value="3">Cheesy crust</option>
-                                        <option value="4">New York Style *Limited Time*</option>
+                                <select id="pizzaBaseSelect" class="form-select" aria-label="Default select example">
+                                        <option value="Regular" selected>Regular</option>
+                                        <option value="Thin crust">Thin crust</option>
+                                        <option value="Cheesy crust">Cheesy crust</option>
+                                        <option value="New York Style *Limited Time*">New York Style *Limited Time*</option>
                                 </select>
                             </div>
                     </div><!--Pizza BASE dropdown label and select END-->
@@ -73,32 +73,32 @@
                             <div class="form-group-lg">
                             <div th:each="facility : ${facilities}" class="column_2">
                                 <span>
-                                    <input type="checkbox"/>
+                                    <input type="checkbox" name="extraOption" value="Pineapple"/>
                                     <label class="checkbox-inline" >Pineapple</label>
                                 </span>
                                 
                                 <span>
-                                    <input type="checkbox"/>
+                                    <input type="checkbox" name="extraOption" value="Pepperoni"/>
                                     <label class="checkbox-inline">Pepperoni</label>
                                 </span>
                                 
                                 <span>
-                                    <input type="checkbox" />
+                                    <input type="checkbox" name="extraOption" value="American Cheese"/>
                                     <label class="checkbox-inline">American Cheese</label>
                                 </span>
                                 
                                 <span>
-                                    <input type="checkbox" />
+                                    <input type="checkbox" name="extraOption" value="Bacon"/>
                                     <label class="checkbox-inline" >Bacon</label>
                                 </span>
                                 
                                 <span>
-                                    <input type="checkbox"/>
+                                    <input type="checkbox" name="extraOption" value="Smoked Chicken"/>
                                     <label class="checkbox-inline" >Smoked Chicken</label>
                                 </span>
                                 
                                 <span>
-                                    <input type="checkbox" />
+                                    <input type="checkbox" name="extraOption" value="Ham"/>
                                     <label class="checkbox-inline">Ham</label>
                                 </span>
                                 
@@ -107,7 +107,7 @@
                         </div> <!--Pizza EXTRAS dropdown label and select END-->
                 
 
-                    <button type="submit" class="btn mt-4 " style="background-color: #F43438">Order!</button>
+                    <button id="pizzaSubmitBtn" type="button" class="btn mt-4 " style="background-color: #F43438">Order!</button>
                 </form>
             </div>
         </div>
@@ -115,11 +115,48 @@
         <div class="col-lg-4 pizzaContent">
             <div class="container py-3">
                 <h3 class="pt-2">Your Cart</h3>
+                <hr>
+
+                <div id="groupOfPizza" class="container">
+                    <h6>Size Crust Type</h6>
+                    <ul>
+                        <li>Extra 1</li>
+                        <li>Extra 2</li>
+                    </ul>
+                    <p>Extra Price: $3.00</p>
+                    <p>Total Price: $23.00</p>
+                    <hr>
+                </div>
+                <hr>
+                <div class="container mx-auto row pt-2">
+                    <div class="col-xl-6">
+                        <h6>Total:</h6>
+                    </div>
+                    <div class="col-xl-6">
+                        <h6 id="priceTotal">PRICE</h6>
+                    </div>
+                </div>
+                
+                <div class="input-group pt-3">
+                        <input type="text" class="form-control" placeholder="Have a coupon?">
+                        <div class="input-group-append">
+                          <button class="btn btn-warning" type="button" id="couponBtn" >Add Coupon</button>
+                        </div>
+                </div>
+                      
+
+
+                <div class="container btn-group mx-auto pt-4">
+                        <a href="#" class="btn btn-warning mx-2">Clear</a>
+                        <a href="#" class="btn btn-warning mx-2">Checkout</a>
+                </div>
+
             </div>
         </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="main.js"></script>
   </body>
 </html>
