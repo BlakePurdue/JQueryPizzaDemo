@@ -17,7 +17,7 @@ class Pizza {
   let pizzaBaseMap = new Map();
 
   let localCartPizzas = [];
-  let localTotalPrice = 0.00;
+  let localTotalPrice = 10.00;
 
 // Function to run on load to populate Maps 
 $(function() {
@@ -143,4 +143,15 @@ $("#couponBtn").click(function(){
     
   }
   $("#couponTextInput").val("");
+});
+
+$("#cancelOrderBtn").click(function(){
+  if(confirm("What about your amazing pizza! Are you sure you want to cancel order?")){
+   // Delete all pizzaes from array
+   localCartPizzas.length = 0;
+
+   // Set price to 0
+   localTotalPrice = 0;
+   $("#priceTotal").html("$ "+ localTotalPrice);
+  }
 });
