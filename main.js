@@ -116,5 +116,31 @@ function addContent(){
 }
 
 $("#couponBtn").click(function(){
-  console.log("Coip");
+  var coup = $("#couponTextInput").val();
+
+  if(localTotalPrice <= 0 || coup == null || coup == ""){
+    //Price is 0, no way we doing discount on that!
+    if(localTotalPrice <= 0){
+      alert("Your carts empty! Add stuff before using discount");
+    }
+    else{
+      
+    }
+   
+  }
+  else {
+    if(coup = "pizza"){
+      //Correct discount code, take 10% off 
+      var discount = localTotalPrice / 10;
+      localTotalPrice = localTotalPrice - discount;
+
+      //Update the price text
+      $("#priceTotal").html("$ "+ localTotalPrice);
+    }
+    else{
+      alert("Thats not the correct coupon code! ");
+    }   
+    
+  }
+  $("#couponTextInput").val("");
 });
