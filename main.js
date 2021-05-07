@@ -78,41 +78,53 @@ $("#pizzaSubmitBtn").click(function(){
     extraPrice,
     totalPrice,
   );
-  
-  addPizzaToCart(newPizza);
+  //Add pizza to array
+  localCartPizzas.push(newPizza);
 
   // Clear form once added to cart
   document.getElementById("pizzaForm").reset();
-});
-
-function addPizzaToCart(pizza){
-  //Add pizza to array
-  localCartPizzas.add(pizza);
+  
   // Update list of pizza
   addContent();
 
   // Update total price
-  localTotalPrice = localTotalPrice + pizza.totalPrice;
+  localTotalPrice = localTotalPrice + newPizza.totalPrice;
   // Update total price on html
   $("#priceTotal").html("$ "+localTotalPrice);
-}
+});
 
 
 function addContent(){
-  for(var i =0; i< localCartPizzas.lenght; i ++){
-    
+  $("#groupOfPizza").empty();
+
+  for(var i =0; i<= localCartPizzas.length; i ++){
+
+    var pizza = localCartPizzas[i];
+
+    var topLineText = pizza.size + " " + pizza.baseType + " " + pizza.typePizza;
+    var topLine = $("<h6></h6>").text(topLineText);
+    console.log(pizza.size);
+    var ulPartTop = $("<ul>");
+
+    //Loop over extras and add 
+    /*
+    var liItems; 
+    for(var e = 0; e < pizza.Extras; e ++){
+      var string = "<li>" + pizza.Extras[e] + "</li>";
+      liItems = liItems + string;
+    }
+    */
+    var liItems ="Blake";
+    var ulPartBottom = $("</ul>");
+
+    var bottomPriceText = "Total: " + pizza.totalPrice;
+    var bottomPrice = $("<h6></h6>").text(bottomPriceText);
+
+    // Add content to page
+    $("#groupOfPizza").append(topLine,ulPartTop,liItems, ulPartBottom);  
+  
   }
-
-
-  var txt1Line = pizza.size + " " + pizza.baseType + " " + pizza.typePizza;
-  var txt1 = $("<h6></h6>").text(txt1Line);
-  var ulPart1 = $("<ul>");
-  var line = $("<li></li>").text(txt1Line);
-  var ulPart2 = $("</ul>");
-
-
-  // Add content to page
-  $("#groupOfPizza").append(txt1,ulPart1,line, ulPart2);  
+  
 }
 
 $("#couponBtn").click(function(){
@@ -153,5 +165,8 @@ $("#cancelOrderBtn").click(function(){
    // Set price to 0
    localTotalPrice = 0;
    $("#priceTotal").html("$ "+ localTotalPrice);
+
+   //Clear the div listing all pizzas
+   $("#groupOfPizza").empty();
   }
 });
