@@ -1,0 +1,34 @@
+/*
+  for(var i =0; i<= localCartPizzas.length; i ++){
+
+    var pizza = localCartPizzas[i];
+    console.log(i);
+    console.log(pizza);
+
+    /*
+    var pSize = pizza.size;
+    console.log(pSize);
+    var topLineText = pSize + " " + pizza.baseType + " " + pizza.typePizza;
+    var topLine = $("<h6></h6>").text(topLineText);
+    var ulPartTop = $("<ul>");
+
+    //Loop over extras and add 
+    
+    var liItems; 
+    for(var e = 0; e < pizza.Extras; e ++){
+      var string = "<li>" + pizza.Extras[e] + "</li>";
+      liItems = liItems + string;
+      console.log(string);
+      console.log(e);
+    }
+    
+    var liItems ="Blake";
+    var ulPartBottom = $("</ul>");
+
+    var bottomPriceText = "Total: " + pizza.totalPrice;
+    var bottomPrice = $("<h6></h6>").text(bottomPriceText);
+
+    // Add content to page
+    $("#groupOfPizza").append(topLine,ulPartTop,liItems, ulPartBottom);  
+    
+  }*/

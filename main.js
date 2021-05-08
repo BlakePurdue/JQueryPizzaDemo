@@ -97,32 +97,34 @@ $("#pizzaSubmitBtn").click(function(){
 function addContent(){
   $("#groupOfPizza").empty();
 
-  for(var i =0; i<= localCartPizzas.length; i ++){
 
-    var pizza = localCartPizzas[i];
+  console.log("Array Length :" + localCartPizzas.length);
+  //console.log(localCartPizzas[0]);
 
-    var topLineText = pizza.size + " " + pizza.baseType + " " + pizza.typePizza;
+  for(var v=0; v < localCartPizzas.length; v ++){
+    //console.log(localCartPizzas[v]);
+    console.log(v);
+
+    var piz = localCartPizzas[v];
+    var topLineText = piz.size + " " + piz.baseType + " " + piz.typePizza;
+    console.log(piz);
     var topLine = $("<h6></h6>").text(topLineText);
-    console.log(pizza.size);
+
     var ulPartTop = $("<ul>");
 
-    //Loop over extras and add 
-    /*
     var liItems; 
-    for(var e = 0; e < pizza.Extras; e ++){
+    console.log(piz.Extras);
+    for(var e = 0; e < piz.Extras; e ++){
+      console.log(e);
       var string = "<li>" + pizza.Extras[e] + "</li>";
       liItems = liItems + string;
     }
-    */
-    var liItems ="Blake";
-    var ulPartBottom = $("</ul>");
 
-    var bottomPriceText = "Total: " + pizza.totalPrice;
-    var bottomPrice = $("<h6></h6>").text(bottomPriceText);
+
+    var ulPartBottom = $("</ul>");
 
     // Add content to page
     $("#groupOfPizza").append(topLine,ulPartTop,liItems, ulPartBottom);  
-  
   }
   
 }
