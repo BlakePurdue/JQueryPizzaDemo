@@ -102,7 +102,7 @@ function addContent(){
 
     var piz = localCartPizzas[v];
     var topLineText = piz.size + " " + piz.baseType + " " + piz.typePizza;
-    console.log(piz);
+    //console.log(piz);
     var topLine = $("<h6></h6>").text(topLineText);
 
     var priceLineText = "Total: $" + piz.totalPrice;
@@ -198,6 +198,6 @@ $("#checkOutOrderBtn").click(function(){
     // Add content to page
     $("#groupOfPizza").append(cartEmptyLine);  
 
-    alert("Your owner is being processed now, well deliver soon!");
+    alert("Your order is being processed now, well deliver soon!");
   }
 });
