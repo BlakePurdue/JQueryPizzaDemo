@@ -145,7 +145,7 @@ $("#couponBtn").click(function(){
    
   }
   else {
-    if(coup = "pizza"){
+    if(coup == "pizza"){
       //Correct discount code, take 10% off 
       var discount = localTotalPrice / 10;
       localTotalPrice = localTotalPrice - discount;
