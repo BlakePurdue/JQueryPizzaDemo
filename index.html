@@ -18,7 +18,7 @@
         <img class="" src="logo.jpeg" width="10%" style="border-radius: 8%;"> <!--- Add Custom CSS Class -->
     </header>
 
-    <div class="container row mx-auto pt-5 h-100">
+    <div class="container row mx-auto pt-5 h-100 pb-3">
         <div class="col-lg-7 pizzaContent rounded shadow-lg">
             <div class="container py-3">
                 <h3 class="py-2">Create your pizza!</h3>
@@ -119,39 +119,33 @@
                 <hr>
 
                 <div id="groupOfPizza" class="container">
-                    <h6>Size Crust Type</h6>
-                    <ul>
-                        <li>Extra 1</li>
-                        <li>Extra 2</li>
-                    </ul>
-                    <p>Extra Price: $3.00</p>
-                    <p>Total Price: $23.00</p>
-                    <hr>
+                    <h6 class="text-center py-5">Your Cart is empty!</h6>
+                    
                 </div>
                 <hr>
                 <div class="container mx-auto row pt-2">
-                    <div class="col-xl-6">
-                        <h6>Total:</h6>
-                    </div>
-                    <div class="col-xl-6">
-                        <h6 id="priceTotal">PRICE</h6>
-                    </div>
-                </div>
-                
-                <div class="input-group pt-3">
-                        <input id="couponTextInput" type="text" class="form-control" placeholder="Have a coupon?">
-                        <div class="input-group-append">
-                          <button class="btn btn-warning" type="button" id="couponBtn" >Add Coupon</button>
+                        <div class="col-xl-6">
+                            <h6>Total:</h6>
+                        </div>
+                        <div class="col-xl-6">
+                            <h6 id="priceTotal">PRICE</h6>
+                        </div>
+                    
+                    
+                        <div class="input-group pt-3">
+                                <input id="couponTextInput" type="text" class="form-control" placeholder="Have a coupon?">
+                                <div class="input-group-append">
+                                <button class="btn btn-warning" type="button" id="couponBtn" >Add Coupon</button>
+                                </div>
+                        </div>
+                            
+
+
+                        <div class="container btn-group mx-auto pt-4">
+                                <button id="cancelOrderBtn" class="btn btn-warning mx-2">Cancel Order</button>
+                                <button id="checkOutOrderBtn" class="btn btn-warning mx-2">Checkout</button>
                         </div>
                 </div>
-                      
-
-
-                <div class="container btn-group mx-auto pt-4">
-                        <button id="cancelOrderBtn" class="btn btn-warning mx-2">Cancel Order</button>
-                        <button id="checkOutOrderBtn" class="btn btn-warning mx-2">Checkout</button>
-                </div>
-
             </div>
         </div>
     </div>
