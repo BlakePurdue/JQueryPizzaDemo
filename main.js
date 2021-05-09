@@ -17,7 +17,7 @@ class Pizza {
   let pizzaBaseMap = new Map();
 
   let localCartPizzas = [];
-  let localTotalPrice = 10.00;
+  let localTotalPrice = 0.00;
 
 // Function to run on load to populate Maps 
 $(function() {
@@ -98,33 +98,35 @@ function addContent(){
   $("#groupOfPizza").empty();
 
 
-  console.log("Array Length :" + localCartPizzas.length);
-  //console.log(localCartPizzas[0]);
-
   for(var v=0; v < localCartPizzas.length; v ++){
-    //console.log(localCartPizzas[v]);
-    console.log(v);
 
     var piz = localCartPizzas[v];
     var topLineText = piz.size + " " + piz.baseType + " " + piz.typePizza;
     console.log(piz);
     var topLine = $("<h6></h6>").text(topLineText);
 
-    var ulPartTop = $("<ul>");
+    var priceLineText = "Total: $" + piz.totalPrice;
+    var priceLine = $("<p></p>").text(priceLineText).addClass("pt-2");
+    
+    var ulTopLine = $("<ul>");
 
-    var liItems; 
-    console.log(piz.Extras);
-    for(var e = 0; e < piz.Extras; e ++){
-      console.log(e);
-      var string = "<li>" + pizza.Extras[e] + "</li>";
-      liItems = liItems + string;
+    $("#groupOfPizza").append(topLine,ulTopLine);  
+
+    var extraLineText ="";
+    for(var b=0; b < piz.Extras.length; b++){
+
+      var extraSelected = piz.Extras[b];
+      extraLineText = extraLineText + extraSelected + "<br>";
+
+      var extraItem = $("<li></li>").text(extraSelected);
+      $("#groupOfPizza").append(extraItem);  
     }
 
+    var ulBottomLine = $("</ul>");
 
-    var ulPartBottom = $("</ul>");
-
+    var extraLine = $("<p></p>").text(extraLineText);
     // Add content to page
-    $("#groupOfPizza").append(topLine,ulPartTop,liItems, ulPartBottom);  
+    $("#groupOfPizza").append(ulBottomLine,priceLine);  
   }
   
 }
@@ -170,5 +172,32 @@ $("#cancelOrderBtn").click(function(){
 
    //Clear the div listing all pizzas
    $("#groupOfPizza").empty();
+
+   var cartEmptyLine = $("<p></p>").text("Your Cart is empty!").addClass("text-center py-5");
+
+    // Add content to page
+    $("#groupOfPizza").append(cartEmptyLine);  
+  }
+});
+
+
+$("#checkOutOrderBtn").click(function(){
+  if(confirm("Are you sure you dont want add anything else?, Continue checkout?")){
+   // Delete all pizzaes from array
+   localCartPizzas.length = 0;
+
+   // Set price to 0
+   localTotalPrice = 0;
+   $("#priceTotal").html("$ "+ localTotalPrice);
+
+   //Clear the div listing all pizzas
+   $("#groupOfPizza").empty();
+
+   var cartEmptyLine = $("<p></p>").text("Your Cart is empty!").addClass("text-center py-5");
+
+    // Add content to page
+    $("#groupOfPizza").append(cartEmptyLine);  
+
+    alert("Your owner is being processed now, well deliver soon!");
   }
 });
